@@ -18,6 +18,7 @@ User = get_user_model()
 
 
 class RegistrationView(APIView):
+    permission_classes = [AllowAny]
     def post(self, request):
         serializer = RegisterSerializer(data=request.data)
         serializer.is_valid(raise_exception=True)
@@ -35,6 +36,7 @@ class RegistrationView(APIView):
 
 class ActivationView(GenericAPIView):
     serializer_class = ActivationSerializer
+    permission_classes = [AllowAny]
 
     def post(self, request):
         serializer = self.get_serializer(data=request.data)

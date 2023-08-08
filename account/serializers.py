@@ -18,10 +18,10 @@ class RegisterSerializer(serializers.ModelSerializer):
         model = CustomUser
         fields = ('email', 'password', 'password_confirmation', 'first_name', 'last_name', 'username', 'address')
 
-    def validate_password(self, value):
-        request = self.context.get('request')
-        validate_password(value, request.user)
-        return value
+    # def validate_password(self, value):
+    #     request = self.context.get('request')
+    #     validate_password(value, request.user)
+    #     return value
 
 
 
@@ -41,19 +41,19 @@ class RegisterSerializer(serializers.ModelSerializer):
 
         return attrs
 
-    # def create(self, validated_data):
-    #     user = User.objects.create_user(**validated_data)
-    #     return user
-
     def create(self, validated_data):
-        return User.objects.create(
-            email=validated_data.get('email'),
-            first_name=validated_data.get('first_name'),
-            last_name=validated_data.get('last_name'),
-            phone=validated_data.get('phone_number'),
-            address=validated_data.get('address'),
-            password=make_password(validated_data.get('password'))
-        )
+        user = User.objects.create_user(**validated_data)
+        return user
+
+    # def create(self, validated_data):
+    #     return User.objects.create(
+    #         email=validated_data.get('email'),
+    #         first_name=validated_data.get('first_name'),
+    #         last_name=validated_data.get('last_name'),
+    #         phone=validated_data.get('phone_number'),
+    #         address=validated_data.get('address'),
+    #         password=make_password(validated_data.get('password'))
+    #     )
 
 
 

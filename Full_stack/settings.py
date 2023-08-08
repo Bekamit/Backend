@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     #MYAPPS
     'account',
     'hotel',
+    'debug_toolbar',
 
 
 
@@ -59,6 +60,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
 ]
 
 ROOT_URLCONF = 'Full_stack.urls'
@@ -166,3 +168,8 @@ SIMPLE_JWT = {
 
 
 AUTH_USER_MODEL = 'account.CustomUser'
+
+
+INTERNAL_IPS = [
+    "127.0.0.1",
+]
