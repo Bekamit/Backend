@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'account',
     'hotel',
     'debug_toolbar',
+    'corsheaders'
 
 
 
@@ -61,6 +62,8 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'debug_toolbar.middleware.DebugToolbarMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
+    'django.middleware.common.CommonMiddleware',
 ]
 
 ROOT_URLCONF = 'Full_stack.urls'
@@ -173,3 +176,12 @@ AUTH_USER_MODEL = 'account.CustomUser'
 INTERNAL_IPS = [
     "127.0.0.1",
 ]
+
+CORS_ALLOWED_ORIGINS = [
+    "https://domain.com",
+    "https://api.domain.com",
+    "http://localhost:8080",
+    "http://127.0.0.1:9000"
+]
+
+
